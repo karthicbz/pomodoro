@@ -12,4 +12,6 @@ body {
 #root {
   padding: 10px;
   height: 100%;
+  background: #ef5350;
+  transition: background ease-in-out 1s;
 }

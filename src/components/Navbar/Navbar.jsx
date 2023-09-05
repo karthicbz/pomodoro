@@ -6,9 +6,9 @@ const Navbar = () => {
     <Wrapper>
       <h2>Pomodoro</h2>
       <ButtonWrapper>
-        <Button variant="contained">Report</Button>
-        <Button variant="contained">Setting</Button>
-        <Button variant="contained">Login</Button>
+        <Button variant="outlined">Report</Button>
+        <Button variant="outlined">Setting</Button>
+        <Button variant="outlined">Login</Button>
       </ButtonWrapper>
     </Wrapper>
   );
