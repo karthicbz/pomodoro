@@ -2,7 +2,7 @@ import { Button } from "@mui/material";
 import { Wrapper } from "./TimerOptions.styles";
 import { useContext } from "react";
 import { TimerContext } from "../../App";
-import Timer from "../../Timer";
+import Timer from "../Timer/Timer";
 
 const TimerOptions = () => {
   const { allTime, setAllTime } = useContext(TimerContext);

@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useContext } from "react";
-import { TimerContext } from "./App";
+import { TimerContext } from "../../App";
+import { TimeWrapper, Wrapper } from "./Timer.styles";
+import { Button } from "@mui/material";
 
 function Timer({ time }) {
   const { allTime } = useContext(TimerContext);
@@ -24,7 +26,12 @@ function Timer({ time }) {
     return () => clearInterval(interval);
   }, [allTime]);
 
-  return <p>{currentTime}</p>;
+  return (
+    <Wrapper>
+      <TimeWrapper>{"25:00"}</TimeWrapper>
+      <Button variant="contained">Start</Button>
+    </Wrapper>
+  );
 }
 
 export default Timer;
