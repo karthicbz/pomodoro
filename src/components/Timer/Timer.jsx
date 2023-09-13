@@ -4,7 +4,7 @@ import { TimerContext } from "../../App";
 import { TimeWrapper, Wrapper } from "./Timer.styles";
 import { Button } from "@mui/material";
 
-function Timer({ time }) {
+function Timer({ time, startTimer, isTimerStart }) {
   const { allTime } = useContext(TimerContext);
   let [currentTime, setCurrentTime] = useState("");
   useEffect(() => {
@@ -28,8 +28,7 @@ function Timer({ time }) {
 
   return (
     <Wrapper>
-      <TimeWrapper>{"25:00"}</TimeWrapper>
-      <Button variant="contained">Start</Button>
+      <TimeWrapper>{currentTime}</TimeWrapper>
     </Wrapper>
   );
 }

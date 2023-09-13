@@ -1,33 +1,60 @@
 import { Button } from "@mui/material";
 import { Wrapper } from "./TimerOptions.styles";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { TimerContext } from "../../App";
 import Timer from "../Timer/Timer";
+import { TimeWrapper } from "../Timer/Timer.styles";
 
 const TimerOptions = () => {
   const { allTime, setAllTime } = useContext(TimerContext);
+  const [dummyTime, setDummyTime] = useState("");
+  const [timerStart, setTimerStart] = useState(false);
+
+  function startTimer() {
+    setTimerStart(true);
+  }
+
   const changeBackground = (color) => {
     const root = document.getElementById("root");
     root.style.background = color;
   };
 
-  const handlePomodoro = () => {
-    changeBackground("#ef5350");
+  const handlePomodoro = (e) => {
+    resetButtonBackground();
+    setTimerStart(false);
+    changeBackground("rgb(239, 83, 80)");
+    setDummyTime("25:00");
     setAllTime(25);
+    e.target.style.background = "rgba(0, 0, 0, 0.1)";
   };
 
-  const handleShortBreak = () => {
+  const handleShortBreak = (e) => {
+    resetButtonBackground();
+    setTimerStart(false);
     changeBackground("#26a69a");
+    setDummyTime("05:00");
     setAllTime(5);
+    e.target.style.background = "rgba(0, 0, 0, 0.1)";
   };
 
-  const handleLongBreak = () => {
+  const handleLongBreak = (e) => {
+    resetButtonBackground();
+    setTimerStart(false);
     changeBackground("#42a5f5");
+    setDummyTime("15:00");
     setAllTime(15);
+    e.target.style.background = "rgba(0, 0, 0, 0.1)";
   };
+
+  function resetButtonBackground() {
+    const allButtons = document.querySelectorAll(".options>button");
+    allButtons.forEach((button) => {
+      button.style.background = "unset";
+    });
+  }
 
   return (
-    <Wrapper>
+    <Wrapper className="options">
       <Button varient="text" onClick={handlePomodoro} sx={{ color: "white" }}>
         Pomodoro
       </Button>
@@ -37,7 +64,20 @@ const TimerOptions = () => {
       <Button varient="text" onClick={handleLongBreak} sx={{ color: "white" }}>
         Long Break
       </Button>
-      <Timer time={allTime} />
+      <div className="timer">
+        {timerStart ? (
+          <Timer
+            time={allTime - 1}
+            startTimer={startTimer}
+            isTimerStart={timerStart}
+          />
+        ) : (
+          <TimeWrapper>{dummyTime}</TimeWrapper>
+        )}
+        <Button variant="contained" onClick={startTimer}>
+          Start
+        </Button>
+      </div>
     </Wrapper>
   );
 };
