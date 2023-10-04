@@ -6,7 +6,7 @@ import "./App.css";
 export const TimerContext = createContext(null);
 
 function App() {
-  const [allTime, setAllTime] = useState(0);
+  const [allTime, setAllTime] = useState(25); //include this default state value in options
 
   function setCurrentTime(t) {
     setTime(t);

@@ -7,7 +7,7 @@ import { TimeWrapper } from "../Timer/Timer.styles";
 
 const TimerOptions = () => {
   const { allTime, setAllTime } = useContext(TimerContext);
-  const [dummyTime, setDummyTime] = useState("");
+  const [dummyTime, setDummyTime] = useState("25:00"); //when default value change change this value
   const [timerStart, setTimerStart] = useState(false);
 
   function startTimer() {
@@ -55,7 +55,11 @@ const TimerOptions = () => {
 
   return (
     <Wrapper className="options">
-      <Button varient="text" onClick={handlePomodoro} sx={{ color: "white" }}>
+      <Button
+        varient="text"
+        onClick={handlePomodoro}
+        sx={{ color: "white", background: "rgba(0, 0, 0, 0.1)" }}
+      >
         Pomodoro
       </Button>
       <Button varient="text" onClick={handleShortBreak} sx={{ color: "white" }}>
